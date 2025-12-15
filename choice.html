@@ -20,11 +20,16 @@ body {
   max-width: 600px;
   line-height: 1.6;
 }
-a {
+button {
+  background: none;
+  border: none;
   color: #e5e5e5;
-  text-decoration: none;
+  font-family: monospace;
+  font-size: 1em;
+  cursor: pointer;
+  padding: 10px;
 }
-a:hover {
+button:hover {
   text-decoration: underline;
 }
 </style>
@@ -35,19 +40,20 @@ a:hover {
 
 <p>
 You will not be asked to solve anything.<br><br>
-
 Only to decide.
 </p>
 
-<p>
-<a href="mailto:hyparchyve@gmail.com?subject=I%20chose%20to%20preserve&body=I%20will%20not%20describe%20what%20I%20saw.">
-Preserve the archive</a>
-</p>
+<form action="mailto:hyparchyve@gmail.com" method="post" enctype="text/plain">
+  <input type="hidden" name="choice" value="preserve">
+  <button type="submit">Preserve the archive</button>
+</form>
 
-<p>
-<a href="mailto:hyparchyve@gmail.com?subject=I%20chose%20to%20reveal&body=I%20accept%20the%20cost%20of%20making%20it%20known.">
-Reveal the archive</a>
-</p>
+<br>
+
+<form action="mailto:hyparchyve@gmail.com" method="post" enctype="text/plain">
+  <input type="hidden" name="choice" value="reveal">
+  <button type="submit">Reveal the archive</button>
+</form>
 
 <p style="opacity:0.6;">
 Both choices close a door.
