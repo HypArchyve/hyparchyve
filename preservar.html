@@ -89,31 +89,19 @@ Essa é a consequência.
 No princípio, Deus criou os céus e a terra.
 </p>
 
+<input type="text" id="resposta" placeholder="Responda">
 <input type="text" id="resposta" placeholder="Responda" autocomplete="off">
 <span id="mensagem"></span>
 
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "genesis";
 const paginaDestino = "https://hyparchyve.github.io/hyparchyve/genesis.html";
 
-/*
-*/
-const hashCorreto = "dce2b9f5b4c6a8e9f7b1d0c2e3f6a4b5c8d7e1f2a3b6c0d1e9f8b2a7c3d4e5f6";
-
-async function gerarHash(texto) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(texto.toLowerCase());
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-input.addEventListener("keypress", async function(event) {
+input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    const hashDigitado = await gerarHash(input.value);
-
-    if (hashDigitado === hashCorreto) {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
       window.location.href = paginaDestino;
     } else {
       mensagem.textContent = "RESPOSTA INCORRETA.";
@@ -122,9 +110,7 @@ input.addEventListener("keypress", async function(event) {
   }
 });
 </script>
-
 <!-- silêncio mantido -->
 <!-- expansão requer perda -->
-
 </body>
 </html>
