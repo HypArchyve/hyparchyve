@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>bin</title>
+<title>Rei</title>
 
 <style>
 body {
-  background: black;
+  background-color: #000;
   color: #e5e5e5;
   font-family: monospace;
   display: flex;
@@ -14,19 +14,24 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
-  flex-direction: column;
 }
 
-p {
+.container {
   text-align: center;
   max-width: 600px;
   line-height: 1.6;
 }
 
-.binary {
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+p.faded {
   opacity: 0.6;
-  white-space: pre-line;
-  margin-top: 2rem;
 }
 
 /* Input minimalista */
@@ -41,7 +46,7 @@ input {
   border-radius: 5px;
   outline: none;
   text-align: center;
-  width: 180px;
+  width: 140px;
   height: 28px;
   transition: 0.2s;
 }
@@ -65,18 +70,11 @@ span {
   font-size: 0.9rem;
 }
 </style>
-
-<script>
-  // Trava o botão de voltar
-  history.pushState(null, null, location.href);
-  window.onpopstate = function () {
-    history.go(1);
-  };
-</script>
-
 </head>
 
 <body>
+
+<div class="container">
 
 <p>
 Você escolheu revelar.<br><br>
@@ -91,30 +89,20 @@ Espaço = Error<br><br>
 01101111
 </p>
 
-<input type="text" id="resposta" placeholder="Responda" autocomplete="off">
+<input type="text" id="resposta" placeholder="Responda">
 <span id="mensagem"></span>
+
+</div>
 
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "desclassificado";
 const paginaDestino = "https://hyparchyve.github.io/hyparchyve/desclassificado.html";
 
-
-const hashCorreto = "cd72b1e7d4dba272364f5cb1d97a1a0d88fcd82844b3f3f63c8b2f7a5b75c6d4";
-
-async function gerarHash(texto) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(texto.toLowerCase());
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-input.addEventListener("keypress", async function(event) {
+input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    const hashDigitado = await gerarHash(input.value);
-
-    if (hashDigitado === hashCorreto) {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
       window.location.href = paginaDestino;
     } else {
       mensagem.textContent = "RESPOSTA INCORRETA.";
@@ -123,8 +111,6 @@ input.addEventListener("keypress", async function(event) {
   }
 });
 </script>
-
-<!-- consequência aceita. -->
 
 </body>
 </html>
