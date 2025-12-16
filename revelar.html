@@ -2,11 +2,11 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Rei</title>
+<title>bin</title>
 
 <style>
 body {
-  background-color: #000;
+  background: black;
   color: #e5e5e5;
   font-family: monospace;
   display: flex;
@@ -14,24 +14,19 @@ body {
   align-items: center;
   height: 100vh;
   margin: 0;
+  flex-direction: column;
 }
 
-.container {
+p {
   text-align: center;
   max-width: 600px;
   line-height: 1.6;
 }
 
-p {
-  margin: 0;
-}
-
-p + p {
-  margin-top: 1rem;
-}
-
-p.faded {
+.binary {
   opacity: 0.6;
+  white-space: pre-line;
+  margin-top: 2rem;
 }
 
 /* Input minimalista */
@@ -46,7 +41,7 @@ input {
   border-radius: 5px;
   outline: none;
   text-align: center;
-  width: 140px;
+  width: 180px;
   height: 28px;
   transition: 0.2s;
 }
@@ -70,11 +65,18 @@ span {
   font-size: 0.9rem;
 }
 </style>
+
+<script>
+  // Adiciona um estado no histórico para "travar" o voltar
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1); // impede o voltar
+  };
+</script>
+
 </head>
 
 <body>
-
-<div class="container">
 
 <p>
 Você escolheu revelar.<br><br>
@@ -83,16 +85,15 @@ Apenas algo para perder.<br><br>
 </p>
 
 <p class="binary">
-Espaço = Error<br><br>
+Espaço = Error<br><br>  
 01100100011001010111001101100011011011000110000101110011<br>
 01110011011010010110011001101001011000110110000101100100<br>
 01101111
 </p>
 
 <input type="text" id="resposta" placeholder="Responda">
+<input type="text" id="resposta" placeholder="Responda" autocomplete="off">
 <span id="mensagem"></span>
-
-</div>
 
 <script>
 const input = document.getElementById('resposta');
@@ -111,6 +112,6 @@ input.addEventListener("keypress", function(event) {
   }
 });
 </script>
-
+<!-- consequência aceita. -->
 </body>
 </html>
