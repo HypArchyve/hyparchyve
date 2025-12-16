@@ -67,10 +67,10 @@ span {
 </style>
 
 <script>
-  // Adiciona um estado no histórico para "travar" o voltar
+  // Trava o botão de voltar
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1); // impede o voltar
+    history.go(1);
   };
 </script>
 
@@ -85,7 +85,7 @@ Apenas algo para perder.<br><br>
 </p>
 
 <p class="binary">
-Espaço = Error<br><br>  
+Espaço = Error<br><br>
 01100100011001010111001101100011011011000110000101110011<br>
 01110011011010010110011001101001011000110110000101100100<br>
 01101111
@@ -97,12 +97,26 @@ Espaço = Error<br><br>
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
-const palavraCorreta = "desclassificado";
 const paginaDestino = "https://hyparchyve.github.io/hyparchyve/desclassificado.html";
 
-input.addEventListener("keypress", function(event) {
+/*
+
+*/
+const hashCorreto = "b5a6b8b1a0f4a63b9c4d9f1d88a6e8a97c3f0b4e0f92d6a2b9a3d4e1c6f7a8b";
+
+async function gerarHash(texto) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(texto.toLowerCase());
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+input.addEventListener("keypress", async function(event) {
   if (event.key === "Enter") {
-    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+    const hashDigitado = await gerarHash(input.value);
+
+    if (hashDigitado === hashCorreto) {
       window.location.href = paginaDestino;
     } else {
       mensagem.textContent = "RESPOSTA INCORRETA.";
@@ -111,6 +125,8 @@ input.addEventListener("keypress", function(event) {
   }
 });
 </script>
+
 <!-- consequência aceita. -->
+
 </body>
 </html>
