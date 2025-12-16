@@ -31,7 +31,7 @@ p + p {
   opacity: 0.8;
 }
 
-/* Estilo do input minimalista */
+/* Input minimalista */
 input {
   margin-top: 1.5rem;
   padding: 0.4rem 0.6rem;
@@ -86,7 +86,6 @@ span {
     6
   </p>
 
-  <!-- Input minimalista -->
   <input type="text" id="resposta" placeholder="Responda" autocomplete="off">
   <span id="mensagem"></span>
 
@@ -95,12 +94,24 @@ span {
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
-const palavraCorreta = "limiar";
 const paginaDestino = "https://hyparchyve.github.io/hyparchyve/limiar.html";
 
-input.addEventListener("keypress", function(event) {
+
+const hashCorreto = "2e07240c1d1f216161bd9cfc589a7c2b7bf548f3edb3d427782efa4935fe16d2";
+
+async function gerarHash(texto) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(texto.toLowerCase());
+  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+input.addEventListener("keypress", async function(event) {
   if (event.key === "Enter") {
-    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+    const hashDigitado = await gerarHash(input.value);
+
+    if (hashDigitado === hashCorreto) {
       window.location.href = paginaDestino;
     } else {
       mensagem.textContent = "RESPOSTA INCORRETA.";
