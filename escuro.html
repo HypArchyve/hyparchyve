@@ -16,38 +16,79 @@ body {
   margin: 0;
   flex-direction: column;
 }
+
 img.qrcode {
   max-width: 300px;
   height: auto;
   margin-bottom: 2rem;
 }
+
 .binary {
   opacity: 0.6;
   white-space: pre-line;
   text-align: center;
+  margin: 0;
+}
+
+p.faded {
+  opacity: 0.6;
+  margin-top: 1rem;
+}
+
+/* Input minimalista */
+input {
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.6rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: #111;
+  color: #e5e5e5;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  width: 140px;
+  height: 28px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #888;
+}
+
+input::placeholder {
+  color: #777;
+  opacity: 0.5;
+}
+
+/* Mensagem de erro */
+span {
+  display: block;
+  margin-top: 0.5rem;
+  color: red;
+  font-weight: bold;
+  opacity: 0.8;
+  font-size: 0.9rem;
 }
 </style>
+
 </head>
 
 <body>
 
-<img src="escuro.png" alt="Escuro" class="escuro">
+<img src="escuro.png" alt="Escuro" class="qrcode">
 
 <p class="binary">
 Reverso.<br>
 Espelho Horizontal?
 </p>
 
-<p style="opacity:0.6;">
-O vazio ilumina o infinito.<br>
-</p>  
+<p class="faded">
+O vazio ilumina o infinito.
+</p>
 
-
-
-  <input type="text" id="resposta" placeholder="Responda">
-  <span id="mensagem"></span>
-
-</div>
+<input type="text" id="resposta" placeholder="Responda">
+<span id="mensagem"></span>
 
 <script>
 const input = document.getElementById('resposta');
