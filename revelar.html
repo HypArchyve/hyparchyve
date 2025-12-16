@@ -67,10 +67,10 @@ span {
 </style>
 
 <script>
-  // Adiciona um estado no histórico para "travar" o voltar
+  // Trava o botão de voltar
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1); // impede o voltar
+    history.go(1);
   };
 </script>
 
@@ -90,8 +90,7 @@ Espaço = Error<br><br>
 01110011011010010110011001101001011000110110000101100100<br>
 01101111
 </p>
-
-<input type="text" id="resposta" placeholder="Responda">
+  
 <input type="text" id="resposta" placeholder="Responda" autocomplete="off">
 <span id="mensagem"></span>
 
