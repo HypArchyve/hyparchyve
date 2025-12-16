@@ -25,6 +25,7 @@ a {
   text-decoration: none;
   display: block;
   margin: 15px 0;
+  cursor: pointer;
 }
 a:hover {
   text-decoration: underline;
@@ -32,10 +33,10 @@ a:hover {
 </style>
 
 <script>
-  // Adiciona um estado no histórico para "travar" o voltar
+  // Trava o botão de voltar
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1); // impede o voltar
+    history.go(1);
   };
 </script>
 
@@ -54,11 +55,11 @@ Apenas a decidir.
 O arquivo existe porque não foi tocado.
 </p>
 
-<a href="https://hyparchyve.github.io/hyparchyve/preservar.html">
+<a id="preservar">
 Preservar o arquivo
 </a>
 
-<a href="https://hyparchyve.github.io/hyparchyve/revelar.html">
+<a id="revelar">
 Revelar o arquivo
 </a>
 
@@ -68,6 +69,26 @@ Você não pode voltar atrás.
 </p>
 
 </div>
+
+<script>
+/*
+
+*/
+const base = "aHR0cHM6Ly9oeXBhcmNoeXZlLmdpdGh1Yi5pby9oeXBhcmNoeXZlLw==";
+
+const caminhos = {
+  p: "cHJlc2VydmFyLmh0bWw=", 
+  r: "cmV2ZWxhci5odG1s"    
+};
+
+function ir(destino) {
+  const url = atob(base) + atob(destino);
+  window.location.href = url;
+}
+
+document.getElementById("preservar").onclick = () => ir(caminhos.p);
+document.getElementById("revelar").onclick = () => ir(caminhos.r);
+</script>
 
 </body>
 </html>
