@@ -53,8 +53,31 @@ Essa é a consequência.
 No princípio, Deus criou os céus e a terra.
 </p>
 
+
+
+  <input type="text" id="resposta" placeholder="Responda">
+  <span id="mensagem"></span>
+
+</div>
+
+<script>
+const input = document.getElementById('resposta');
+const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "genesis";
+const paginaDestino = "https://hyparchyve.github.io/hyparchyve/genesis.html";
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+      window.location.href = paginaDestino;
+    } else {
+      mensagem.textContent = "RESPOSTA INCORRETA.";
+      input.value = "";
+    }
+  }
+});
+</script>
 <!-- silêncio mantido -->
 <!-- expansão requer perda -->
-
 </body>
 </html>
