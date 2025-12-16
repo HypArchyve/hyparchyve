@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Em Desenvolvimento</title>
+<title>Cipher</title>
 
 <style>
 body {
@@ -34,7 +34,6 @@ p.faded {
   opacity: 0.6;
 }
 
-/* Input minimalista */
 input {
   margin-top: 1.5rem;
   padding: 0.4rem 0.6rem;
@@ -46,7 +45,7 @@ input {
   border-radius: 5px;
   outline: none;
   text-align: center;
-  width: 140px;
+  width: 180px;
   height: 28px;
   transition: 0.2s;
 }
@@ -60,7 +59,6 @@ input::placeholder {
   opacity: 0.5;
 }
 
-/* Mensagem de erro */
 span {
   display: block;
   margin-top: 0.5rem;
@@ -77,11 +75,13 @@ span {
 <div class="container">
 
 <p>
-Em Desenvolvimento.<br><br>
+“Nem tudo que é dito está escrito claramente. Troque as letras, encontre o personagem,  
+e a nona palavra revelará o verdadeiro autor.”
 </p>
 
 <p class="faded">
-Em Desenvolvimento.
+Caesar + ?.<br>
+thjilao  
 </p>
 
 <input type="text" id="resposta" placeholder="Responda" autocomplete="off">
@@ -92,8 +92,10 @@ Em Desenvolvimento.
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
-const palavraCorreta = "arthur";
-const paginaDestino = "https://hyparchyve.github.io/hyparchyve/arthur.html";
+
+const palavraCorreta = "shakespeare";
+
+const paginaDestino = "https://hyparchyve.github.io/hyparchyve/shakespeare.html";
 
 input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
