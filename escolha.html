@@ -32,6 +32,8 @@ a:hover {
 </style>
 </head>
 
+<body>
+
 <script>
   // Adiciona um estado no histórico para "travar" o voltar
   history.pushState(null, null, location.href);
@@ -39,8 +41,6 @@ a:hover {
     history.go(1); // impede o voltar
   };
 </script>
-
-<body>
 
 <div class="container">
 
