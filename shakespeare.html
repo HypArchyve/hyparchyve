@@ -31,6 +31,19 @@ p {
   margin-top: 20px;
 }
 
+/* Estilo do link (remove azul e sublinhado) */
+a.faded,
+a.faded:visited {
+  color: #e5e5e5;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a.faded:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
 /* Input minimalista */
 input {
   margin-top: 1.5rem;
@@ -69,10 +82,9 @@ span {
 </style>
 
 <script>
-  // Adiciona um estado no histórico para "travar" o voltar
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1); // impede o voltar
+    history.go(1);
   };
 </script>
 
@@ -87,6 +99,5 @@ Parabéns, HypArchyve termina aqui.<br><br>
   Clique aqui para receber sua recompensa.
 </a>
 
-<!-- Congrats -->
 </body>
 </html>
