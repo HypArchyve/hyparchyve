@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Em Desenvolvimento</title>
+
+<style>
+body {
+  background-color: #000;
+  color: #e5e5e5;
+  font-family: monospace;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+p {
+  margin: 0;
+}
+
+p + p {
+  margin-top: 1rem;
+}
+
+p.faded {
+  opacity: 0.6;
+}
+
+/* Input minimalista */
+input {
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.6rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: #111;
+  color: #e5e5e5;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  width: 140px;
+  height: 28px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #888;
+}
+
+input::placeholder {
+  color: #777;
+  opacity: 0.5;
+}
+
+/* Mensagem de erro */
+span {
+  display: block;
+  margin-top: 0.5rem;
+  color: red;
+  font-weight: bold;
+  opacity: 0.8;
+  font-size: 0.9rem;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<p>
+Em Desenvolvimento.<br><br>
+</p>
+
+<p class="faded">
+Em Desenvolvimento.
+</p>
+
+<input type="text" id="resposta" placeholder="Responda" autocomplete="off">
+<span id="mensagem"></span>
+
+</div>
+
+<script>
+const input = document.getElementById('resposta');
+const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "arthur";
+const paginaDestino = "https://hyparchyve.github.io/hyparchyve/arthur.html";
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+      window.location.href = paginaDestino;
+    } else {
+      mensagem.textContent = "RESPOSTA INCORRETA.";
+      input.value = "";
+    }
+  }
+});
+</script>
+
+</body>
+</html>
