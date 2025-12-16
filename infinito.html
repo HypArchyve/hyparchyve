@@ -15,19 +15,59 @@ body {
   height: 100vh;
   margin: 0;
 }
+
 .container {
   text-align: center;
   max-width: 600px;
   line-height: 1.6;
 }
-a {
-  color: #e5e5e5;
-  text-decoration: none;
-  display: block;
-  margin: 15px 0;
+
+p {
+  margin: 0;
 }
-a:hover {
-  text-decoration: underline;
+
+p + p {
+  margin-top: 1rem;
+}
+
+p.faded {
+  opacity: 0.6;
+}
+
+/* Input minimalista */
+input {
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.6rem;
+  font-family: monospace;
+  font-size: 0.9rem;
+  background: #111;
+  color: #e5e5e5;
+  border: 1px solid #555;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  width: 140px;
+  height: 28px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #888;
+}
+
+input::placeholder {
+  color: #777;
+  opacity: 0.5;
+}
+
+/* Mensagem de erro */
+span {
+  display: block;
+  margin-top: 0.5rem;
+  color: red;
+  font-weight: bold;
+  opacity: 0.8;
+  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -40,14 +80,12 @@ a:hover {
 Pior do que a morte é perder a esperança. A pior morte é perder a esperança.<br><br>
 </p>
 
-<p style="opacity:0.6;">
-50.667255, -4.758593<br>
+<p class="faded">
+50.667255, -4.758593
 </p>
 
-
-
-  <input type="text" id="resposta" placeholder="Responda">
-  <span id="mensagem"></span>
+<input type="text" id="resposta" placeholder="Responda">
+<span id="mensagem"></span>
 
 </div>
 
@@ -68,10 +106,6 @@ input.addEventListener("keypress", function(event) {
   }
 });
 </script>
-
-</body>
-</html>
-</div>
 
 </body>
 </html>
