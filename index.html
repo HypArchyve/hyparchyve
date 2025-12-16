@@ -30,6 +30,26 @@ p + p {
   margin-top: 3.5rem;
   opacity: 0.8;
 }
+
+input {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-family: monospace;
+  font-size: 1rem;
+  background: #111;
+  color: #e5e5e5;
+  border: 1px solid #555;
+  outline: none;
+  text-align: center;
+}
+
+span {
+  display: block;
+  margin-top: 0.5rem;
+  color: red;
+  font-weight: bold;
+  opacity: 0.8;
+}
 </style>
 </head>
 
@@ -46,17 +66,29 @@ p + p {
     Raros permanecem.
   </p>
 
-
-  
-  <p>
-    6
-  </p>
+  <p>Responda</p>
+  <input type="text" id="resposta">
+  <span id="mensagem"></span>
 
 </div>
 
-<!-- contar apenas o que resta -->
-<!-- hypárchein -->
-<!-- Bem-vindo ao HypArchyve -->
+<script>
+const input = document.getElementById('resposta');
+const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "hipertexto"; // Substitua pela palavra certa
+const paginaDestino = "pagina.html"; // Substitua pela página que quer abrir
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+      window.location.href = paginaDestino;
+    } else {
+      mensagem.textContent = "RESPOSTA INCORRETA.";
+      input.value = "";
+    }
+  }
+});
+</script>
 
 </body>
 </html>
