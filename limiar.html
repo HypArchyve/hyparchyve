@@ -68,12 +68,13 @@ span {
 </head>
 
 <script>
-  // Trava o botão de voltar
+  // Adiciona um estado no histórico para "travar" o voltar
   history.pushState(null, null, location.href);
   window.onpopstate = function () {
-    history.go(1);
+    history.go(1); // impede o voltar
   };
 </script>
+
 
 <body>
 
@@ -91,7 +92,7 @@ span {
     Genérico.<br>
     ZXNjb2xoYQ==
   </p>
-  
+
   <input type="text" id="resposta" placeholder="Responda" autocomplete="off">
   <span id="mensagem"></span>
 
@@ -100,26 +101,12 @@ span {
 <script>
 const input = document.getElementById('resposta');
 const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "escolha";
 const paginaDestino = "https://hyparchyve.github.io/hyparchyve/escolha.html";
 
-/*
-
-*/
-const hashCorreto = "3f6f3c4f6f8e6d7a87d3e8b7f64c7d16b1f1e8dcb6c9c74a9b45fbd29b8e6f1a";
-
-async function gerarHash(texto) {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(texto.toLowerCase());
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-input.addEventListener("keypress", async function(event) {
+input.addEventListener("keypress", function(event) {
   if (event.key === "Enter") {
-    const hashDigitado = await gerarHash(input.value);
-
-    if (hashDigitado === hashCorreto) {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
       window.location.href = paginaDestino;
     } else {
       mensagem.textContent = "RESPOSTA INCORRETA.";
