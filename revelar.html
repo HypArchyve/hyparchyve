@@ -27,6 +27,15 @@ p {
   margin-top: 2rem;
 }
 </style>
+
+<script>
+  // Adiciona um estado no histórico para "travar" o voltar
+  history.pushState(null, null, location.href);
+  window.onpopstate = function () {
+    history.go(1); // impede o voltar
+  };
+</script>
+
 </head>
 
 <body>
