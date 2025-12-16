@@ -53,7 +53,31 @@ Espaço = Error<br><br>
 01101111
 </p>
 
-<!-- consequência aceita -->
 
+
+
+  <input type="text" id="resposta" placeholder="Responda">
+  <span id="mensagem"></span>
+
+</div>
+
+<script>
+const input = document.getElementById('resposta');
+const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "desclassificado";
+const paginaDestino = "https://hyparchyve.github.io/hyparchyve/desclassificado.html";
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+      window.location.href = paginaDestino;
+    } else {
+      mensagem.textContent = "RESPOSTA INCORRETA.";
+      input.value = "";
+    }
+  }
+});
+</script>
+<!-- consequência aceita. -->
 </body>
 </html>
