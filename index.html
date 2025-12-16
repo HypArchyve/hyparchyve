@@ -31,18 +31,25 @@ p + p {
   opacity: 0.8;
 }
 
+/* Estilo do input minimalista */
 input {
-  margin-top: 1rem;
-  padding: 0.3rem 0.6rem;
+  margin-top: 1.5rem;
+  padding: 0.4rem 0.6rem;
   font-family: monospace;
   font-size: 0.9rem;
   background: #111;
   color: #e5e5e5;
   border: 1px solid #555;
+  border-radius: 5px;
   outline: none;
   text-align: center;
-  width: 150px;
-  height: 30px;
+  width: 140px;
+  height: 28px;
+  transition: 0.2s;
+}
+
+input:focus {
+  border-color: #888;
 }
 
 input::placeholder {
@@ -50,12 +57,14 @@ input::placeholder {
   opacity: 0.5;
 }
 
+/* Mensagem de erro */
 span {
   display: block;
   margin-top: 0.5rem;
   color: red;
   font-weight: bold;
   opacity: 0.8;
+  font-size: 0.9rem;
 }
 </style>
 </head>
@@ -74,11 +83,10 @@ span {
   </p>
 
   <p>
-    6<br><br>
+    6
   </p>
 
-
-
+  <!-- Input minimalista -->
   <input type="text" id="resposta" placeholder="Responda">
   <span id="mensagem"></span>
 
