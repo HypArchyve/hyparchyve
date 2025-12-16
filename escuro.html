@@ -42,7 +42,30 @@ Espelho Horizontal?
 O vazio ilumina o infinito.<br>
 </p>  
 
-<!-- Edição -->
 
+
+  <input type="text" id="resposta" placeholder="Responda">
+  <span id="mensagem"></span>
+
+</div>
+
+<script>
+const input = document.getElementById('resposta');
+const mensagem = document.getElementById('mensagem');
+const palavraCorreta = "infinito";
+const paginaDestino = "https://hyparchyve.github.io/hyparchyve/infinito.html";
+
+input.addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
+      window.location.href = paginaDestino;
+    } else {
+      mensagem.textContent = "RESPOSTA INCORRETA.";
+      input.value = "";
+    }
+  }
+});
+</script>
+<!-- Edição -->
 </body>
 </html>
