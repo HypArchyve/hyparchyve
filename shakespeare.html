@@ -80,33 +80,13 @@ span {
 <body>
 
 <p>
-Parabéns.<br><br>
+Parabéns, HypArchyve termina aqui.<br><br>
 </p>
 
-<p class="faded">
-HypArchyve termina aqui.
-</p>
+<a class="faded" href="https://youtu.be/dQw4w9WgXcQ?si=mfjpfjVZLdkZMwRi">
+  Clique aqui para receber sua recompensa.
+</a>
 
-<input type="text" id="resposta" placeholder="Responda" autocomplete="off">
-<span id="mensagem"></span>
-
-<script>
-const input = document.getElementById('resposta');
-const mensagem = document.getElementById('mensagem');
-const palavraCorreta = "shakespeare";
-const paginaDestino = "https://hyparchyve.github.io/hyparchyve/shakespeare.html";
-
-input.addEventListener("keypress", function(event) {
-  if (event.key === "Enter") {
-    if (input.value.toLowerCase() === palavraCorreta.toLowerCase()) {
-      window.location.href = paginaDestino;
-    } else {
-      mensagem.textContent = "RESPOSTA INCORRETA.";
-      input.value = "";
-    }
-  }
-});
-</script>
 <!-- Congrats -->
 </body>
 </html>
