@@ -10,15 +10,25 @@ body {
   color: #e5e5e5;
   font-family: monospace;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
+  padding: 20px;
 }
+
 p {
   text-align: center;
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.8;
+  margin: 10px 0;
+}
+
+.faded {
+  opacity: 0.6;
+  font-size: 0.9em;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -28,11 +38,11 @@ p {
 <p>
 Você escolheu preservar.<br><br>
 Nada seguirá.<br>
-Essa é a consequência.<br>
+Essa é a consequência.
 </p>
 
-<p style="opacity:0.6;">
-¹ No princípio criou Deus os céus e a terra. <br>
+<p class="faded">
+¹ No princípio criou Deus os céus e a terra.
 </p>
 
 <!-- silêncio mantido -->
