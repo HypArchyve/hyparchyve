@@ -33,14 +33,21 @@ p + p {
 
 input {
   margin-top: 1rem;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.6rem;
   font-family: monospace;
-  font-size: 1rem;
+  font-size: 0.9rem;
   background: #111;
   color: #e5e5e5;
   border: 1px solid #555;
   outline: none;
   text-align: center;
+  width: 150px;
+  height: 30px;
+}
+
+input::placeholder {
+  color: #777;
+  opacity: 0.5; /* deixa mais transparente */
 }
 
 span {
@@ -66,8 +73,7 @@ span {
     Raros permanecem.
   </p>
 
-  <p>Responda</p>
-  <input type="text" id="resposta">
+  <input type="text" id="resposta" placeholder="Responda">
   <span id="mensagem"></span>
 
 </div>
